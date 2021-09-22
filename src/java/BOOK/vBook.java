@@ -15,6 +15,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.Iterator;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.hibernate.Query;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
@@ -28,7 +29,11 @@ public class vBook {
     private static SessionFactory factory;
     private boolean noData=false;
     
+   
+    
     public String execute() throws Exception {
+        
+        
         try
         {
             factory = new AnnotationConfiguration().configure().addAnnotatedClass(aBook.class).buildSessionFactory();
@@ -45,7 +50,9 @@ public class vBook {
         {
             blist=new ArrayList<aBook>();
             tx=session.beginTransaction();
-            List depts=session.createQuery("FROM books").list();
+            Query query = session.createQuery("FROM books");
+            List<aBook> depts=query.list();
+            System.out.println("========Hai==========");
             for(Iterator iterator=depts.iterator();iterator.hasNext();)
             {
                 aBook d=(aBook)iterator.next();
@@ -62,8 +69,8 @@ public class vBook {
         }
         
     }
-
-    public void setNoData(boolean noData) {
+    
+     public void setNoData(boolean noData) {
         this.noData = noData;
     }
 
@@ -78,4 +85,6 @@ public class vBook {
     public List<aBook> getClist() {
         return this.blist;
     }
+
+    
 }

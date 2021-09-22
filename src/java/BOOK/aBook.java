@@ -6,6 +6,9 @@
 package BOOK;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -98,25 +101,7 @@ public class aBook {
             System.out.println("!!EXCEPTION HERE!!"+e);
         }
         return SUCCESS;
-//        try{
-//            Session session = factory.openSession();
-//            Transaction tx = session.beginTransaction();
-//            
-//            aBook ep = new aBook();
-//            ep.setBname(bname);
-//            ep.setBauth(bauth);
-//            
-//            session.save(ep);
-//            tx.commit();
-//            System.out.println("Successfully Inserted");
-//            factory.close();
-//            
-//        }
-//        catch(Exception e)
-//        {
-//            System.out.println("Insertion Not Succesfull"+e);
-//        }
-//        return SUCCESS;
      }
+    
     
 }
